@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Muokkaa</h1>
+<form method="POST"action="{{ url_for('tabs_update', id=tab.id) }}" id="tabform" >
+  Nimi: <input type="text" name="name" value ={{tab.name}}>
+  <input type="submit" value="Lähetä muokkaukset"/>
+</form>
+<textarea  rows="50" cols= "100"  name="content" form="tabform">{{tab.content}}.</textarea>
+{% endblock %}
+
+

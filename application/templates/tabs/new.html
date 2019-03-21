@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('tabs_create') }}" id="tabform" >
+  Nimi: <input type="text" name="name"/>
+  <input type="submit" value="Lisää tabulatuuri"/>
+</form>
+<textarea  rows="50" cols= "100"  name="content" form="tabform">Kirjoita sisältö tänne...</textarea>
+{% endblock %}
