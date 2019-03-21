@@ -12,7 +12,7 @@ Toimintoja
 ## Linkkejä <h2>
 [User Stories](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/userStories.md)
   
-[Linkki sovellukseen herokussa](https://tsoha-tabulatuurit-ht.herokuapp.com/tabs/)
+[Linkki sovellukseen Herokussa](https://tsoha-tabulatuurit-ht.herokuapp.com/tabs/)
 
 
 
