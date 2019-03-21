@@ -10,6 +10,7 @@
   - Vain kirjautuneen käyttäjän on mahdollista lisätä sivustolle tabulatuureja.
   - Käyttäjän on mahdollista hakea yksittäistä tabulatuuria sivustolta kappaleen nimen perusteella.
   - Käyttäjän on mahdollista hakea tabulatuureja kappaleiden genrejen perusteella.
+  - Käyttäjän on mahdollista hakea tabulatuureja tabulatuurin kirjoittaneen käyttäjän perusteella.
   - Käyttäjän on mahdollista nähdä, missä genressä on sivustolla eniten tabulatuureja.
   
   
