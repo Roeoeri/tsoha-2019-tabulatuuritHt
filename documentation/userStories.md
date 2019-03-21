@@ -4,7 +4,7 @@
   - Käyttäjän on mahdollista muokata yksittäistä sivustolla olevaa tabulatuuria esimerkiksi virheen takia.
   - Käyttäjän on mahdollista lisätä sivustolle uusia tabulatuureja. 
   
-  ## Toteuttamatta olevat <h2>
+  ## Ideoita toteutettaviksi toiminnallisuuksiksi <h2>
   - Käyttäjän on mahdollista kirjautua sivustolle.
   - Vain kirjautuneen käyttäjän on mahdollista muokata yksittäistä sivustolla olevaa tabulatuuria.
   - Vain kirjautuneen käyttäjän on mahdollista lisätä sivustolle tabulatuureja.
