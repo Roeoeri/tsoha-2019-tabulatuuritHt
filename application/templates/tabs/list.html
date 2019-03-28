@@ -6,10 +6,13 @@
     {% for t in tabs %}
     
       <h3>{{ t.name }}</h3>
-      <pre>{{t.content}}</pre>
       <form method="GET" action="{{url_for('tabs_update_form', id=t.id)}}">
       <input type="submit" value="Muokkaa"/>
       </form>
+      <form method="GET" action="{{url_for('tabs_single', id=t.id)}}">
+      <input type="submit" value="Näytä"/>
+      </form>
+
    
     {% endfor %}
  

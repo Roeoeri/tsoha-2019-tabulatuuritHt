@@ -13,6 +13,11 @@ def tabs_update_form(id):
 	tab = Tab.query.get(id)
 	return render_template("tabs/update.html", tab = tab)
 
+@app.route ("/tabs/<id>", methods=["GET"])
+def tabs_single(id):
+	tab = Tab.query.get(id)
+	return render_template("tabs/single.html", tab = tab)
+
 @app.route ("/tabs/<id>/", methods=["POST"])
 def tabs_update(id):
 	
