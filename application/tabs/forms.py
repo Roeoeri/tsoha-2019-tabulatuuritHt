@@ -1,7 +1,6 @@
-from wtforms import TextAreaField
+
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms import validators
+from wtforms import StringField, TextAreaField, validators
 
 
 
