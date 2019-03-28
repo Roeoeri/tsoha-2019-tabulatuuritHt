@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
-
 {% block body %}
 {{error}}
-<form method="Post" action ="{{url_for('auth_login')}}">
+<form method="Post" action ="{{url_for('auth_create')}}">
     <table>
         <tr>
             <td>
@@ -21,9 +20,15 @@
             </td>
         </tr>
         <tr>
-            <input type = "submit" value = "Kirjaudu Sisään"/>
+            <input type = "submit" value = "Rekisteröidy"/>
         </tr>
     </table>
 </form>
+{% for error in form.username.errors %}
+{{error}}
+{% endfor %}
+
+{% for error in form.password.errors %}
+{{error}}
+{% endfor %}
 {% endblock %}
-    
