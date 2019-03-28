@@ -15,8 +15,17 @@ def tabs_update_form(id):
 
 @app.route ("/tabs/<id>", methods=["GET"])
 def tabs_single(id):
+	
 	tab = Tab.query.get(id)
 	return render_template("tabs/single.html", tab = tab)
+
+
+@app.route ("/tabs/delete/<id>", methods=["GET"])
+def tabs_delete(id):
+	tab = Tab.query.get(id)
+	db.session.delete(tab)
+	db.session.commit()
+	return redirect(url_for("tabs_index"))
 
 @app.route ("/tabs/<id>/", methods=["POST"])
 def tabs_update(id):
