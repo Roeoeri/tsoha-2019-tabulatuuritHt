@@ -1,6 +1,7 @@
 from application import app, db
 from flask import render_template, request,redirect, url_for
 from application.tabs.models import Tab
+from application.tabs.forms import TabForm
 
 
 @app.route ("/tabs/", methods=["GET"])
@@ -24,15 +25,20 @@ def tabs_update(id):
 
 @app.route("/tabs/new/")
 def tabs_form():
-	return render_template("tabs/new.html")
+	return render_template("tabs/new.html", form = TabForm())
 
 @app.route("/tabs/", methods=["POST"])
 def tabs_create():
+
+	form = TabForm(request.form)
+
+	if not form.validate():
+			return render_template("tabs/new.html", form = form)
 	print(request.form.get("name"))
 	print(request.form.get("content"))
-	
-	name = request.form.get("name")
-	content = request.form.get("content")
+
+	name = (form.name.data)
+	content = (form.content.data)
 	
 	tab = Tab(name,content)
 	

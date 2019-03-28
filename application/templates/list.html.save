@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Done</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+      <td>{{ task.name }}</td>
+      <td>{{ task.done }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %

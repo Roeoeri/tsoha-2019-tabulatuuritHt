@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  
+    {% for tab in tabs %}
+    
+      <p>{{ tab.name }}</p>
+      <p>{{ tab.content}</p>
+   
+    {% endfor %}
+ 
+{% endblock %}

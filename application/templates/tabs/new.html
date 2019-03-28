@@ -2,8 +2,26 @@
   
 {% block body %}
 <form method="POST" action="{{ url_for('tabs_create') }}" id="tabform" >
-  Nimi: <input type="text" name="name"/>
+  <table>
+    <tr>
+      <td>
+          {{form.name.label }}
+          {{form.name}}
+          {% for error in form.name.errors %}
+          {{error}}
+          {% endfor %}
+      </td>
+    </tr>
+    <tr>
+      <td>
+          {{form.content(cols="100",rows = "50")}}
+      </td>
+    </tr>
+  </table>
   <input type="submit" value="Lisää tabulatuuri"/>
+  {% for error in form.content.errors %}
+  {{error}}
+  {% endfor %}
 </form>
-<textarea  rows="50" cols= "100"  name="content" form="tabform">Kirjoita sisältö tänne...</textarea>
+
 {% endblock %}
