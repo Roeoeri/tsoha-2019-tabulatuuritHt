@@ -2,7 +2,7 @@
 
 {% block body %}
 <main role="main" class="container">
-<h3>Tabulatuurit</h3>
+<h3>Kaikki tabulatuurit</h3>
   
     {% for t in tabs %}
       <a href="{{url_for('tabs_single', id=t.id)}}">{{t.name}}</a>
