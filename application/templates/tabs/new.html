@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
   
 {% block body %}
+<main role="main" class="container">
 <form method="POST" action="{{ url_for('tabs_create') }}" id="tabform" >
   <table>
     <tr>
@@ -14,14 +15,14 @@
     </tr>
     <tr>
       <td>
-          {{form.content(cols="100",rows = "50")}}
+          {{form.content(cols="100",rows = "30")}}
       </td>
     </tr>
   </table>
-  <input type="submit" value="Lisää tabulatuuri"/>
+  <input type="submit"  class = "btn btn-success" value="Lisää tabulatuuri"/>
   {% for error in form.content.errors %}
   {{error}}
   {% endfor %}
 </form>
-
+</main>
 {% endblock %}

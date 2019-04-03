@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{{error}}
+<main role="main" class="container">
 <form method="Post" action ="{{url_for('auth_login')}}">
     <table>
         <tr>
@@ -20,10 +20,11 @@
                 {{form.password}}
             </td>
         </tr>
-        <tr>
-            <input type = "submit" value = "Kirjaudu Sisään"/>
-        </tr>
     </table>
+    <input type = "submit" class="btn btn-primary" value = "Kirjaudu Sisään"/>
+    {{error}}
+
 </form>
+</main>
 {% endblock %}
     

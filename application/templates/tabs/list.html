@@ -1,22 +1,11 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>Tabulatuurit</h1>
+<main role="main" class="container">
+<h3>Tabulatuurit</h3>
   
     {% for t in tabs %}
-    
-      <h2>{{ t.name }}</h2>
-      <form method="GET" action="{{url_for('tabs_update_form', id=t.id)}}">
-      <input type="submit" value="Muokkaa"/>
-      </form>
-      <form method="GET" action="{{url_for('tabs_single', id=t.id)}}">
-      <input type="submit" value="Näytä"/>
-      </form>
-      </form>
-      <form method="GET" action="{{url_for('tabs_delete', id=t.id)}}">
-      <input type="submit" value="Poista"/>
-      </form>
-      
+      <a href="{{url_for('tabs_single', id=t.id)}}">{{t.name}}</a>
     {% endfor %}
- 
+  </main>
 {% endblock %}

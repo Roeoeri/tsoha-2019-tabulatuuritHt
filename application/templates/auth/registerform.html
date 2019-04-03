@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-{{error}}
+<main role="main" class="container">
 <form method="Post" action ="{{url_for('auth_create')}}">
     <table>
         <tr>
@@ -10,6 +10,12 @@
             <td>
             {{form.username}}
             </td>
+            <td>
+                {% for error in form.username.errors %}
+                {{error}}
+                {% endfor %}
+                    
+            </td>
         </tr>
         <tr>
             <td>
@@ -18,17 +24,14 @@
             <td>
                 {{form.password}}
             </td>
-        </tr>
-        <tr>
-            <input type = "submit" value = "Rekisteröidy"/>
+            <td>
+                    {% for error in form.password.errors %}
+                    {{error}}
+                    {% endfor %}
+            </td>
         </tr>
     </table>
+    <input type = "submit" class="btn btn-primary" value = "Rekisteröidy"/>
 </form>
-{% for error in form.username.errors %}
-{{error}}
-{% endfor %}
-
-{% for error in form.password.errors %}
-{{error}}
-{% endfor %}
+</main>
 {% endblock %}

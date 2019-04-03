@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>{{tab.name}}</h1>
+<main role="main" class="container">
+<h3>{{tab.name}}</h3>
       <pre>{{tab.content}}</pre>
+      {%if current_user.is_authenticated%}
+      <form method="GET" action="{{url_for('tabs_update_form', id=tab.id)}}">
+      <input type="submit" class="btn btn-success" value="Muokkaa"/>
+      </form>
+      <form method="POST" action="{{url_for('tabs_delete', id=tab.id)}}">
+      <input type="submit" class="btn btn-danger" value="Poista"/>
+      </form>
+      {% endif%}
+</main>
 {% endblock %}
