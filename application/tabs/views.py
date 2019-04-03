@@ -1,5 +1,6 @@
 from application import app, db
 from flask import render_template, request,redirect, url_for
+from flask_login import login_required, current_user
 from application.tabs.models import Tab
 from application.tabs.forms import TabForm
 
@@ -9,6 +10,7 @@ def tabs_index():
 	return render_template("tabs/list.html", tabs = Tab.query.all())
 
 @app.route ("/tabs/update/<id>/", methods = ["GET"])
+@login_required
 def tabs_update_form(id):
 	tab = Tab.query.get(id)
 	return render_template("tabs/update.html", tab = tab)
@@ -20,7 +22,8 @@ def tabs_single(id):
 	return render_template("tabs/single.html", tab = tab)
 
 
-@app.route ("/tabs/delete/<id>", methods=["GET"])
+@app.route ("/tabs/delete/<id>", methods=["POST"])
+@login_required
 def tabs_delete(id):
 	tab = Tab.query.get(id)
 	db.session.delete(tab)
@@ -28,6 +31,7 @@ def tabs_delete(id):
 	return redirect(url_for("tabs_index"))
 
 @app.route ("/tabs/<id>/", methods=["POST"])
+@login_required
 def tabs_update(id):
 	
 	tab = Tab.query.get(id)
@@ -38,10 +42,12 @@ def tabs_update(id):
 	return redirect(url_for("tabs_index"))
 
 @app.route("/tabs/new/")
+@login_required
 def tabs_form():
 	return render_template("tabs/new.html", form = TabForm())
 
 @app.route("/tabs/", methods=["POST"])
+@login_required
 def tabs_create():
 
 	form = TabForm(request.form)
@@ -55,6 +61,7 @@ def tabs_create():
 	content = (form.content.data)
 	
 	tab = Tab(name,content)
+	tab.account_id = current_user.id
 	
 	db.session().add(tab)
 	db.session().commit()
