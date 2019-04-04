@@ -29,10 +29,7 @@ def genre_create():
 
     genreFormContent = (form.genre.data)
 
-
-
     genre = Genre(genreFormContent)
-	
 	
     db.session().add(genre)
     db.session().commit()

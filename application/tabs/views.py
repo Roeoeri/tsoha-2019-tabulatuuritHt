@@ -62,19 +62,12 @@ def tabs_create():
 	name = (form.name.data)
 	content = (form.content.data)
 
-
-
-
 	tab = Tab(name,content)
 	tab.account_id = current_user.id
 
-	
-
 	genres = request.form.getlist('genre_switch')
 	
-	
 	db.session().add(tab)
-
 	db.session.flush()
 
 	for g in genres:

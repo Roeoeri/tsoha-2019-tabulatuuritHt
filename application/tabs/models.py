@@ -9,7 +9,6 @@ class Tab(db.Model):
 
 	account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable = False)
 
-	
 	def __init__(self,name,content):
 		self.name = name
 		self.content = content
