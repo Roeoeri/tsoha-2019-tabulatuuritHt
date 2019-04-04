@@ -29,8 +29,12 @@ def tabs_single(id):
 @login_required
 def tabs_delete(id):
 	tab = Tab.query.get(id)
+	GenreTab.query.filter_by(tab_id = id).delete()
+	
 	db.session.delete(tab)
 	db.session.commit()
+
+	
 	return redirect(url_for("tabs_index"))
 
 @app.route ("/tabs/<id>/", methods=["POST"])
