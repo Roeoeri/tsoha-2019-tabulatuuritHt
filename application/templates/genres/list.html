@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<main role="main" class="container">
+<h3>Tabulatuurit genren mukaan</h3>
+    {% for g in genres %}
+      <p>{{g.genre}} sisältää {{g.amount}} tabulatuuria</p>
+    {% endfor %}
+  </main>
+{% endblock %}

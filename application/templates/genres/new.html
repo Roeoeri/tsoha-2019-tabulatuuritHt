@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<main role="main" class="container">
+<form method="POST" action="{{ url_for('genre_create') }}" id="tabform" >
+    <h3>Lisää genre</h3>
+    <p>
+        Mikäli et löytänyt haluaamasi genreä, voit lisätä sellaisen täältä
+    </p>
+  <table>
+    <tr>
+      <td>
+          {{form.genre.label}}
+          {{form.genre}}
+          {% for error in form.genre.errors %}
+          {{error}}
+          {% endfor %}
+      </td>
+    </tr>
+  </table>
+  <input type="submit"  class = "btn btn-success" value="Lisää Genre"/>
+</form>
+</main>
+{% endblock %}
