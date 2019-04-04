@@ -17,8 +17,7 @@ Toimintoja
 [Linkki sovellukseen Herokussa](https://tsoha-tabulatuurit-ht.herokuapp.com/tabs/)
 
 ## Sovelluksen tunnukset <h2>
-  Sovellukseen pääsee kirjautumaan käyttäjätunnuksella "hello" ja salasanalla "world". Vielä tästä ei tosin ole hyötyä, sillä suojattuja routeja ei ole vielä toteutettu.
-
+  Sovellukseen pääsee kirjautumaan käyttäjätunnuksella "hello" ja salasanalla "world".
 
 
 
