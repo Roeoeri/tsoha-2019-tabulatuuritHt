@@ -15,7 +15,15 @@
     </tr>
     <tr>
       <td>
-          {{form.content(cols="100",rows = "30")}}
+      Genre: 
+      {% for g in genres %}
+        <input type = "checkbox" value= "{{g.id}}" name = "genre_switch">{{g.genre}} </input>
+      {% endfor %}
+      </td>
+    </tr>
+    <tr>
+      <td>
+          {{form.content(style="font-family:monospace", cols="100",rows = "30")}}
       </td>
     </tr>
   </table>

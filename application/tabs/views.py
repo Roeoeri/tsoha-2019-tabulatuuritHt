@@ -2,12 +2,15 @@ from application import app, db
 from flask import render_template, request,redirect, url_for
 from flask_login import login_required, current_user
 from application.tabs.models import Tab
+from application.genreTab.models import GenreTab
+from application.genres.models import Genre
 from application.tabs.forms import TabForm
 
 
 @app.route ("/tabs/", methods=["GET"])
 def tabs_index():
 	return render_template("tabs/list.html", tabs = Tab.query.all())
+
 
 @app.route ("/tabs/update/<id>/", methods = ["GET"])
 @login_required
@@ -44,7 +47,7 @@ def tabs_update(id):
 @app.route("/tabs/new/")
 @login_required
 def tabs_form():
-	return render_template("tabs/new.html", form = TabForm())
+	return render_template("tabs/new.html", form = TabForm(), genres = Genre.query.all())
 
 @app.route("/tabs/", methods=["POST"])
 @login_required
@@ -54,16 +57,30 @@ def tabs_create():
 
 	if not form.validate():
 			return render_template("tabs/new.html", form = form)
-	print(request.form.get("name"))
-	print(request.form.get("content"))
+	
 
 	name = (form.name.data)
 	content = (form.content.data)
-	
+
+
+
+
 	tab = Tab(name,content)
 	tab.account_id = current_user.id
+
+	
+
+	genres = request.form.getlist('genre_switch')
+	
 	
 	db.session().add(tab)
+
+	db.session.flush()
+
+	for g in genres:
+		genretab = GenreTab(g,tab.id)
+		db.session.add(genretab)
+
 	db.session().commit()
 
 	return redirect(url_for("tabs_index"))
