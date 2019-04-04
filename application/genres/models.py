@@ -3,7 +3,7 @@ from application import db
 class Genre(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	genre = db.Column(db.String(150), nullable=False)
-	genreTabs = db.relationship("GenreTab", backref='genre', lazy =True)
+	genreTabs = db.relationship("GenreTab", backref='Genre', lazy =True)
 	
 	@staticmethod
 	def find_tabs_in_genre():

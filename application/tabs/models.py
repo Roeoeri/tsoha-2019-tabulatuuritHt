@@ -9,6 +9,8 @@ class Tab(db.Model):
 
 	account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable = False)
 
+	genreTabs = db.relationship("GenreTab", backref='Tab', lazy =True)
+
 	def __init__(self,name,content):
 		self.name = name
 		self.content = content
