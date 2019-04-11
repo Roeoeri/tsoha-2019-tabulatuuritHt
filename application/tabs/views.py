@@ -54,7 +54,7 @@ def tabs_form():
 	return render_template("tabs/new.html", form = TabForm(), genres = Genre.query.all())
 
 @app.route("/tabs/", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required(role="USER")
 def tabs_create():
 
 	form = TabForm(request.form)
