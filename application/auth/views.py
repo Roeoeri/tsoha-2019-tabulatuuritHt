@@ -46,9 +46,7 @@ def auth_create():
         return render_template("auth/registerform.html", form = form)
 
     userRole = Role.query.filter_by(name="USER").first()
-    roleId = userRole.id
-    print(roleId)
-
+    
     username = (form.username.data)
     password = (form.password.data)
 	
