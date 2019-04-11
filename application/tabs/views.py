@@ -1,6 +1,6 @@
-from application import app, db
+from application import app, db,login_required
 from flask import render_template, request,redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import  current_user
 from application.tabs.models import Tab
 from application.genreTab.models import GenreTab
 from application.genres.models import Genre
@@ -13,7 +13,7 @@ def tabs_index():
 
 
 @app.route ("/tabs/update/<id>/", methods = ["GET"])
-@login_required
+@login_required(role="ADMIN")
 def tabs_update_form(id):
 	tab = Tab.query.get(id)
 	return render_template("tabs/update.html", tab = tab)
@@ -26,7 +26,7 @@ def tabs_single(id):
 
 
 @app.route ("/tabs/delete/<id>", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def tabs_delete(id):
 	tab = Tab.query.get(id)
 	GenreTab.query.filter_by(tab_id = id).delete()
@@ -38,7 +38,7 @@ def tabs_delete(id):
 	return redirect(url_for("tabs_index"))
 
 @app.route ("/tabs/<id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def tabs_update(id):
 	
 	tab = Tab.query.get(id)
@@ -49,12 +49,12 @@ def tabs_update(id):
 	return redirect(url_for("tabs_index"))
 
 @app.route("/tabs/new/")
-@login_required
+@login_required(role="USER")
 def tabs_form():
 	return render_template("tabs/new.html", form = TabForm(), genres = Genre.query.all())
 
 @app.route("/tabs/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def tabs_create():
 
 	form = TabForm(request.form)
