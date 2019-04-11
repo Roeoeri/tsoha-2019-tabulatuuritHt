@@ -1,7 +1,7 @@
 
-from application import app, db
+from application import app, db, login_required
 from flask import render_template, request,redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 from application.tabs.models import Tab
 from application.genres.models import Genre
 from application.genres.forms import GenreForm
@@ -13,13 +13,13 @@ def genres_index():
 
 
 @app.route ("/genres/new/", methods=["GET"])
-@login_required
+@login_required(role="USER")
 def genre_form():
 	return render_template("genres/new.html", form = GenreForm())
 
 
 @app.route ("/genres/new/", methods=["POST"])
-@login_required
+@login_required(role="USER")
 def genre_create():
 
     form = GenreForm(request.form)
