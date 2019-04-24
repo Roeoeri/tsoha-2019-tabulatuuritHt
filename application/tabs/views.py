@@ -2,6 +2,7 @@ from application import app, db,login_required
 from flask import render_template, request,redirect, url_for
 from flask_login import  current_user
 from application.tabs.models import Tab
+from application.auth.models import Role
 from application.genreTab.models import GenreTab
 from application.genres.models import Genre
 from application.tabs.forms import TabForm
@@ -20,9 +21,19 @@ def tabs_update_form(id):
 
 @app.route ("/tabs/<id>", methods=["GET"])
 def tabs_single(id):
+
+	isAdmin = False
+	if current_user.is_authenticated:
+		for user_role in current_user.roles:
+			user_id=user_role.id
+			role = Role.query.get(user_id).name
+			if role == "ADMIN":
+				isAdmin = True
+
 	
+
 	tab = Tab.query.get(id)
-	return render_template("tabs/single.html", tab = tab)
+	return render_template("tabs/single.html", tab = tab, isAdmin = isAdmin)
 
 
 @app.route ("/tabs/delete/<id>", methods=["POST"])
