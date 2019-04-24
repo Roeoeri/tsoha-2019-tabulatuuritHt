@@ -45,6 +45,11 @@ def auth_create():
     if not form.validate():
         return render_template("auth/registerform.html", form = form)
 
+    user = User.query.filter_by(username = form.username.data).first()
+    
+    if user:
+        return render_template("auth/registerform.html", form = form, error = "Käyttäjä on jo olemassa")
+
     userRole = Role.query.filter_by(name="USER").first()
     
     username = (form.username.data)
