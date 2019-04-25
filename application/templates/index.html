@@ -1,9 +1,15 @@
 {% extends "layout.html" %}
-
 {% block body %}
 <main role="main" class="container">
-  <p>
-    Kirjaudu sisään
+  <h1>Tabulatuurikirjasto</h1>
+  <p>Tervetuloa tabulatuurikirjastoon. Voit selata 
+      <a href="{{ url_for('tabs_index') }} " title="Kaikki tabulatuurit">kaikkia tabulatuureja </a>
+      tai selata tabulatuureja 
+      <a href="{{ url_for('genres_index') }} " title="Tabulatuurit genren mukaan">genren mukaan.</a>
+      Lisätäksesi omia tabulatuureja sivustolle, 
+      <a href="{{ url_for('auth_login')}}" title="Kirjaudu sisään">kirjaudu sisään</a> 
+      tai
+      <a href="{{url_for('auth_register')}}" title="Rekisteröidy">rekisteröidy </a>.
   </p>
 </main>
 {% endblock %}
