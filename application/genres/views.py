@@ -12,6 +12,21 @@ def genres_index():
 	return render_template("genres/list.html", genres = Genre.find_tabs_in_genre())
 
 
+@app.route ("/genres/<id>", methods=["GET"])
+def genre_single(id):
+    stmt = "select tab.name, tab.id from genre join genre_tab on genre.id = genre_tab.genre_id join tab on tab.id = genre_tab.tab_id where genre.id =" +id
+
+    genreName = Genre.query.get(id).genre
+
+    res = db.engine.execute(stmt)
+    response = []
+    for row in res:
+	    response.append({"name": row[0], "id": row[1]})
+    
+    return render_template("genres/tabsInGenre.html", name = genreName, tabs = response)
+
+
+
 @app.route ("/genres/new/", methods=["GET"])
 @login_required(role="USER")
 def genre_form():

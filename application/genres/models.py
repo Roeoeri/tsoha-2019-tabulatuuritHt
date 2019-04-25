@@ -7,12 +7,12 @@ class Genre(db.Model):
 	
 	@staticmethod
 	def find_tabs_in_genre():
-		stmt = "Select genre.genre, count(*) from genre_tab join genre on genre.id = genre_tab.genre_id group by genre.genre"
+		stmt = "Select genre.genre, count(*), genre.id from genre_tab join genre on genre.id = genre_tab.genre_id group by genre.genre"
 
 		res = db.engine.execute(stmt)
 		response = []
 		for row in res:
-			response.append({"genre": row[0], "amount": row[1]})
+			response.append({"genre": row[0], "amount": row[1], "id":row[2]})
 		return response
 
 	def __init__(self,genre):
