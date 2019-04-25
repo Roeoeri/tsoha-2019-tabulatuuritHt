@@ -46,11 +46,9 @@ def tabs_update_form(id):
 @app.route ("/tabs/<id>", methods=["GET"])
 def tabs_single(id):
 
-	isAdmin = canEdit(id)
-
 	tab = Tab.query.get(id)
 	
-	return render_template("tabs/single.html", tab = tab, isAdmin = isAdmin)
+	return render_template("tabs/single.html", tab = tab, canEdit = canEdit(id))
 
 
 @app.route ("/tabs/delete/<id>", methods=["POST"])
