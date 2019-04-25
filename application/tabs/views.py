@@ -19,8 +19,9 @@ def canEdit(tab_id):
 				isAuthorized = True 
 
 	tab = Tab.query.get(tab_id)
-	if tab.account_id == current_user.id:
-		isAuthorized = True
+	if current_user.is_authenticated:
+		if tab.account_id == current_user.id:
+			isAuthorized = True
 
 	
 	return isAuthorized
