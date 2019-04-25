@@ -1,39 +1,26 @@
 {% extends "layout.html" %}
+
 {% block body %}
 <main role="main" class="container">
+<h1>Rekisteröityminen</h1>
 <form method="Post" action ="{{url_for('auth_create')}}">
-    <table>
-        <tr>
-            <td>
-            {{form.username.label}}
-            </td>
-            <td>
-            {{form.username}}
-            </td>
-            <td>
-                {% for error in form.username.errors %}
-                {{error}}
-                {% endfor %}
-                {{error}}
-                    
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{form.password.label}}
-            </td>
-            <td>
-                {{form.password}}
-            </td>
-            <td>
-                    {% for error in form.password.errors %}
-                    {{error}}
-                    {% endfor %}
-                    
-            </td>
-        </tr>
-    </table>
-    <input type = "submit" class="btn btn-primary" value = "Rekisteröidy"/>
+        <div class="form-group">
+        <label for="kenttä, käyttäjätunnus">{{form.username.label}}</label>
+        {{form.username(class="form-control")}}
+        {% for error in form.username.errors %}
+        <small id="errorInUserName" class="form-text text-muted">{{error}}</small>
+        {% endfor %}
+        <small id="errorInUserName" class="form-text text-muted">{{error}}</small>
+        </div>
+        <div class="form-group">
+        <label for="kenttä, salasana">{{form.password.label}}</label>
+        {{form.password(class="form-control")}}
+        {% for error in form.password.errors %}
+        <small id="errorInPassword" class="form-text text-muted">{{error}}</small>
+        {% endfor %}
+        </div>
+        <input type="submit" class="btn btn-primary" value = "Rekisteröidy"/>
+        </form>
 </form>
 </main>
 {% endblock %}
