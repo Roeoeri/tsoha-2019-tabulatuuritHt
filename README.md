@@ -1,6 +1,6 @@
 # Tietokantasovellus harjoitustyö <h1>
 ## Kuvaus <h2>
-Harjoitustyön tarkoituksena on luoda sivusto, josta käyttäjät voivat lukea kitaran tai basson tabulatuureja.  Sivusto tarjoaa normaaleille käyttäjille mahdollisuuden tabulatuurien etsimiseen joko kappaleen nimen tai genren perusteella. Lisäksi sivusto tarjoaa mahdollisuuden käyttäjätunnuksen luomiseen. Kirjautuneilla käyttäjillä on mahdollisuus lisätä, poistaa tai muokata sivustolla olevia tabulatuureja. 
+Harjoitustyön tarkoituksena on luoda sivusto, josta käyttäjät voivat lukea kitaran tai basson tabulatuureja.  Sivusto tarjoaa normaaleille käyttäjille mahdollisuuden tabulatuurien etsimiseen joko kappaleen nimen tai genren perusteella. Lisäksi sivusto tarjoaa mahdollisuuden käyttäjätunnuksen luomiseen. Kirjautuneilla käyttäjillä on mahdollisuus lisätä, poistaa tai muokata omia sivustolla olevia tabulatuureja. Lisäksi Admin-käyttäjillä on mahdollisuus poistaa ja muokata kaikkia sivustolla olevia tabulatuureja.
   
 Toimintoja 
 - Tabulatuurien etsiminen ja lukeminen
