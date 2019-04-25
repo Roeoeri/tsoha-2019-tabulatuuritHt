@@ -1,4 +1,4 @@
-from application import app, db,login_required
+from application import app, db,login_required, login_manager
 from flask import render_template, request,redirect, url_for
 from flask_login import  current_user
 from application.tabs.models import Tab
@@ -7,6 +7,24 @@ from application.genreTab.models import GenreTab
 from application.genres.models import Genre
 from application.tabs.forms import TabForm
 
+def canEdit(tab_id):
+
+	isAuthorized = False
+
+	if current_user.is_authenticated:
+		for user_role in current_user.roles:
+			user_id = user_role.id
+			role = Role.query.get(user_id).name
+			if role == "ADMIN":
+				isAuthorized = True 
+
+	tab = Tab.query.get(tab_id)
+	if tab.account_id == current_user.id:
+		isAuthorized = True
+
+	
+	return isAuthorized
+
 
 @app.route ("/tabs/", methods=["GET"])
 def tabs_index():
@@ -14,43 +32,51 @@ def tabs_index():
 
 
 @app.route ("/tabs/update/<id>/", methods = ["GET"])
-@login_required(role="ADMIN")
+@login_required()
 def tabs_update_form(id):
+	canUpdate = canEdit(id)
+
+	if not canUpdate:
+		return login_manager.unauthorized()
+
+	
 	tab = Tab.query.get(id)
 	return render_template("tabs/update.html", tab = tab)
 
 @app.route ("/tabs/<id>", methods=["GET"])
 def tabs_single(id):
 
-	isAdmin = False
-	if current_user.is_authenticated:
-		for user_role in current_user.roles:
-			user_id=user_role.id
-			role = Role.query.get(user_id).name
-			if role == "ADMIN":
-				isAdmin = True
-
-	
+	isAdmin = canEdit(id)
 
 	tab = Tab.query.get(id)
+	
 	return render_template("tabs/single.html", tab = tab, isAdmin = isAdmin)
 
 
 @app.route ("/tabs/delete/<id>", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required()
 def tabs_delete(id):
 	tab = Tab.query.get(id)
 	GenreTab.query.filter_by(tab_id = id).delete()
-	
+
+	canDelete = canEdit(id)
+
+	if not canDelete:
+		return login_manager.unauthorized()
+
 	db.session.delete(tab)
 	db.session.commit()
 
-	
 	return redirect(url_for("tabs_index"))
 
 @app.route ("/tabs/<id>/", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required()
 def tabs_update(id):
+
+	canUpdate = canEdit(id)
+
+	if not canUpdate:
+		return login_manager.unauthorized()
 	
 	tab = Tab.query.get(id)
 	tab.name = (request.form.get("name"))
