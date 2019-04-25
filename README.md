@@ -10,14 +10,18 @@ Toimintoja
 - Tabulatuurien muokkaminen
 
 ## Linkkejä <h2>
+  
+ 
 [User Stories](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/userStories.md)
 
 [Tietokantakaavio](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/tietokantakaavio.md)
   
 [Linkki sovellukseen Herokussa](https://tsoha-tabulatuurit-ht.herokuapp.com/tabs/)
 
+[Asennusohje](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/Asennus.md)
+
 ## Sovelluksen tunnukset <h2>
-  Sovellukseen pääsee kirjautumaan käyttäjätunnuksella "hello" ja salasanalla "world".
+  Sovellukseen pääsee kirjautumaan pääkäyttäjänä käyttäjätunnuksella "Admin" ja salasanalla "root".
 
 
 
