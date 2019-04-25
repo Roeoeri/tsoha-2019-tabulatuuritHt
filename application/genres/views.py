@@ -26,6 +26,12 @@ def genre_create():
 
     if not form.validate():
         return render_template("/genres/new.html", form = form)
+    
+    genreExists = Genre.query.filter_by(genre = form.genre.data).first()
+
+    if genreExists:
+        return render_template("/genres/new.html", form = form, error = "Genre on jo olemassa")
+        
 
     genreFormContent = (form.genre.data)
 
