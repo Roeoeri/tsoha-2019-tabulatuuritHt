@@ -13,9 +13,7 @@ def canEdit(tab_id):
 
 	if current_user.is_authenticated:
 		for user_role in current_user.roles:
-			user_id = user_role.id
-			role = Role.query.get(user_id).name
-			if role == "ADMIN":
+			if user_role.name == "ADMIN":
 				isAuthorized = True 
 
 	tab = Tab.query.get(tab_id)

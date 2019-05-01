@@ -76,6 +76,8 @@ from application.genres import models
 
 from application.genreTab import models
 
+from application.profile import views
+
 from application.auth.models import User
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)

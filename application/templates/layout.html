@@ -23,6 +23,15 @@
             <a class="nav-link" href="{{ url_for('genre_form') }} " title = "Lisää genre">Lisää Genre</a>
             {% endif %}
           </li>
+          <li class ="nav-item">
+            {% if current_user.is_authenticated %}
+		        {% for user_role in current_user.roles %}
+            {% if user_role.name == "ADMIN" %}
+            <a class="nav-link" href="{{ url_for('profiles') }} " title = "Hallinnoi käyttäjiä">Hallinnoi käyttäjiä</a>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </li>
         </ul>
         <div class="form-inline mt-2 mt-md-0">
     {% if current_user.is_authenticated %}
@@ -36,9 +45,6 @@
     </nav>
     
     {% block body %}
-    <p>
-Content.
-    </p>
     {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
