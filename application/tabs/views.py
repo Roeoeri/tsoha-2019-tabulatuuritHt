@@ -94,7 +94,7 @@ def tabs_create():
 	form = TabForm(request.form)
 
 	if not form.validate():
-			return render_template("tabs/new.html", form = form)
+			return render_template("tabs/new.html", form = form, genres = Genre.query.all())
 	
 
 	name = (form.name.data)
