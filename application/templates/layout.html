@@ -6,20 +6,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
 <a class="navbar-brand" href="#">Tabulatuurit</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('tabs_index') }} " title = "Kaikki tabulatuurit">Kaikki Tabulatuurit</a>
-            <a class="nav-link" href="{{ url_for('genres_index') }} " title = "Tabulatuurit genren mukaan">Tabulatuurit genren mukaan</a>
-          </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Selaa
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ url_for('tabs_index') }}">Kaikki tabulatuurit</a>
+                  <a class="dropdown-item" href="{{ url_for('genres_index') }}">Tabulatuurit genren mukaan</a>
+                </div>
+              </li>
           <li class="nav-item">
               {% if current_user.is_authenticated %}
             <a class="nav-link" href="{{ url_for('tabs_form') }} " title = "Lisää tabulatuuri">Lisää tabulatuuri</a>
+            {% endif %}
+          </li>
+          <li class="nav-item">
+              {% if current_user.is_authenticated %}
             <a class="nav-link" href="{{ url_for('genre_form') }} " title = "Lisää genre">Lisää Genre</a>
             {% endif %}
           </li>
