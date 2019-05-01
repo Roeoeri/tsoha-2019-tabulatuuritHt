@@ -5,7 +5,7 @@ from application.tabs.models import Tab
 from application.auth.models import Role
 from application.genreTab.models import GenreTab
 from application.genres.models import Genre
-from application.tabs.forms import TabForm
+from application.tabs.forms import TabForm, TabUpdateForm
 
 def canEdit(tab_id):
 
@@ -40,7 +40,7 @@ def tabs_update_form(id):
 
 	
 	tab = Tab.query.get(id)
-	return render_template("tabs/update.html", tab = tab)
+	return render_template("tabs/update.html", tab = tab, form = TabUpdateForm())
 
 @app.route ("/tabs/<id>", methods=["GET"])
 def tabs_single(id):
@@ -71,11 +71,18 @@ def tabs_delete(id):
 def tabs_update(id):
 
 	canUpdate = canEdit(id)
+	
 
 	if not canUpdate:
 		return login_manager.unauthorized()
-	
+
+
+	form = TabUpdateForm(request.form)
 	tab = Tab.query.get(id)
+
+	if not form.validate():
+		return render_template("tabs/update.html", form = form, tab = tab)
+	
 	tab.name = (request.form.get("name"))
 	tab.content = (request.form.get("content"))
 	db.session().commit()

@@ -1,12 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<h1>Muokkaa</h1>
-<form method="POST"action="{{ url_for('tabs_update', id=tab.id) }}" id="tabform" >
-  Nimi: <input type="text" name="name" value ={{tab.name}}>
-  <input type="submit" value="Lähetä muokkaukset"/>
-</form>
-<textarea  rows="30" cols= "100" style="font-family:monospace" name="content" form="tabform">{{tab.content}}</textarea>
+
+<main role="main" class="container">
+    <h1>Muokkaa</h1>
+    <form method="POST"action="{{ url_for('tabs_update', id=tab.id) }}" id="tabform" >
+        <div class = "form-group">
+            <label for="kenttä, tabulatuurin nimi">{{form.name.label}}</label>
+            {{form.name(class="form-control", value=tab.name)}}
+            {% for error in form.name.errors %}
+            <small id="errorInContent" class="form-text text-muted">{{error}}</small>
+            {% endfor %}
+          </div>
+          <div class="form-group">
+              <label for="kenttä, tabulatuurin sisältö">Tabulatuuri</label>
+              {% set f = form.content.process_data(tab.content) %}
+              {{form.content(class="form-control",value="asdasd", style="font-family:monospace", cols="100",rows = "30")}}
+              {% for error in form.content.errors %}
+              <small id="errorInContent" class="form-text text-muted">{{error}}</small>
+              {% endfor %}
+          </div>
+          <input type="submit"  class = "btn btn-primary" value="Lähetä muokkaukset"/>
+    </form>
+    </main>
 {% endblock %}
 
 
