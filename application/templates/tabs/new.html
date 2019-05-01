@@ -2,40 +2,32 @@
   
 {% block body %}
 <main role="main" class="container">
+<h1>Lisää tabulatuuri</h1>
 <form method="POST" action="{{ url_for('tabs_create') }}" id="tabform" >
-  <table>
-    <tr>
-      <td>
-          {{form.name.label }}
-          {{form.name}}
-          {% for error in form.name.errors %}
-          {{error}}
-          {% endfor %}
-      </td>
-    </tr>
-    <tr>
-      <td>
-      Genre: 
-      {% for g in genres %}
-        <input type = "checkbox" value= "{{g.id}}" name = "genre_switch">{{g.genre}} </input>
-      {% endfor %}
-      </td>
-    </tr>
-    <tr>
-      <td>
+    <div class="form-group">
+        <label for = "valintaruudut, genre">Genre:</label>
+        {% for g in genres %}
+          <input type = "checkbox" value= "{{g.id}}" name = "genre_switch">{{g.genre}}</input>
+        {% endfor %}
+        <p>
         <a href="{{ url_for('genre_create')}}">Etkö löytänyt haluamaasi genreä? Lisää sellainen tästä  </a> 
-      </td>
-    </tr>
-    <tr>
-      <td>
-          {{form.content(style="font-family:monospace", cols="100",rows = "30")}}
-      </td>
-    </tr>
-  </table>
-  <input type="submit"  class = "btn btn-success" value="Lisää tabulatuuri"/>
-  {% for error in form.content.errors %}
-  {{error}}
-  {% endfor %}
+      </p>
+    </div>
+    <div class = "form-group">
+        <label for="kenttä, tabulatuurin nimi">{{form.name.label}}</label>
+        {{form.name(class="form-control")}}
+        {% for error in form.name.errors %}
+        <small id="errorInContent" class="form-text text-muted">{{error}}</small>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+          <label for="kenttä, tabulatuurin sisältö">Tabulatuuri</label>
+          {{form.content(class="form-control", style="font-family:monospace", cols="100",rows = "30")}}
+          {% for error in form.content.errors %}
+          <small id="errorInContent" class="form-text text-muted">{{error}}</small>
+          {% endfor %}
+      </div>
+      <input type="submit"  class = "btn btn-primary" value="Lisää tabulatuuri"/>
 </form>
 </main>
 {% endblock %}

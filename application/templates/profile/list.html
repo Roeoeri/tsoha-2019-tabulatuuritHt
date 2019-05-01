@@ -2,12 +2,16 @@
 
 {% block body %}
 <main role="main" class="container">
-<h3>Hallinnoi käyttäjiä</h3>
+<h1>Hallinnoi käyttäjiä</h1>
   
+<ul class="list-group list-group-flush">
+    <ul class="list-group">
     {% for u in users %}
-    <p>
-        <a href="{{url_for('single_profile', id=u.id)}}">{{u.username}}</a>
-    </p>
+    <a href="{{url_for('single_profile', id=u.id)}}" class="list-group-item list-group-item-action">{{u.username}}
+    </a> 
     {% endfor %}
+  </ul>
   </main>
 {% endblock %}
+
+
