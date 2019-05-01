@@ -81,7 +81,12 @@ def tabs_update(id):
 	tab = Tab.query.get(id)
 
 	if not form.validate():
-		return render_template("tabs/update.html", form = form, tab = tab)
+		rejectedName = request.form.get("name")
+		rejectedContent = request.form.get("content")
+		rejectedTab = Tab(rejectedName,rejectedContent)
+		rejectedTab.id = tab.id
+		
+		return render_template("tabs/update.html", form = form, tab = rejectedTab)
 	
 	tab.name = (request.form.get("name"))
 	tab.content = (request.form.get("content"))
