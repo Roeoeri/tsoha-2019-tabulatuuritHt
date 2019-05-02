@@ -1,22 +1,17 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <main role="main" class="container">
-      <h1>Tabulatuurit genren mukaan</h1>
-      <ul class="list-group list-group-flush">
-          <ul class="list-group">
-          {% for g in genres %}
-          <a href="{{url_for('tabs_in_genre', id=g.id)}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{g.genre}}
-              <span class="badge badge-primary">{{g.amount}}</span>
-          </a> 
-          {% endfor %}
-        </ul>
-        </main>
-      
+<main role="main" class="container">
+  <h1>Tabulatuurit genren mukaan</h1>
+  <ul class="list-group list-group-flush">
+    <ul class="list-group">
+      {% for g in genres %}
+      <a href="{{url_for('tabs_in_genre', id=g.id)}}"
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{g.genre}}
+        <span class="badge badge-primary">{{g.amount}}</span>
+      </a>
+      {% endfor %}
+    </ul>
+</main>
+
 {% endblock %}
-
-
-
-
-
-    

@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
-  
+
 {% block body %}
 <main role="main" class="container">
-<form method="POST" action="{{ url_for('genre_create') }}" id="tabform" >
+  <form method="POST" action="{{ url_for('genre_create') }}" id="tabform">
     <h1>Lisää genre</h1>
     <p>
-        Mikäli et löytänyt haluaamasi genreä, voit lisätä sellaisen täältä
+      Mikäli et löytänyt haluaamasi genreä, voit lisätä sellaisen täältä
     </p>
-    <div class= "form-group">
+    <div class="form-group">
       <label for="Tekstikenttä,genre">{{form.genre.label}}</label>
       {{form.genre(class="form-control")}}
       {% for error in form.genre.errors %}
@@ -15,7 +15,7 @@
       {% endfor %}
       <small id="errorInGenre" class="form-text text-muted">{{error}}</small>
     </div>
-  <input type="submit"  class = "btn btn-primary" value="Lisää Genre"/>
-</form>
+    <input type="submit" class="btn btn-primary" value="Lisää Genre" />
+  </form>
 </main>
 {% endblock %}

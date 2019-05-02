@@ -2,12 +2,12 @@
 
 {% block body %}
 <main role="main" class="container">
-<h3>{{user.username}}</h3>
-<h4>Käyttäjän tabulatuurit</h4>
-{% for t in tabs %}
-<p>
-  <a href="{{url_for('tabs_single', id=t.id)}}">{{t.name}}</a>
-</p>
-{% endfor %}
+  <h3>{{user.username}}</h3>
+  <h4>Käyttäjän tabulatuurit</h4>
+  {% for t in tabs %}
+  <p>
+    <a href="{{url_for('tabs_single', id=t.id)}}">{{t.name}}</a>
+  </p>
+  {% endfor %}
 </main>
 {% endblock %}
