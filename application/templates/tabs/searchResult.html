@@ -1,0 +1,17 @@
+
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="container">
+  <h1>Tulokset haulle: {{keyword}}</h1>
+  <ul class="list-group list-group-flush">
+    <ul class="list-group">
+      {% for t in tabs %}
+      <a href="{{url_for('tabs_single', id=t.id)}}" class="list-group-item list-group-item-action">{{t.name}}
+      </a>
+      {% endfor %}
+    </ul>
+
+</main>
+
+
+{% endblock %}

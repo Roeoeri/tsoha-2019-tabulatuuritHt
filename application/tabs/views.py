@@ -25,6 +25,13 @@ def canEdit(tab_id):
 	return isAuthorized
 
 
+@app.route("/tabs/", methods = ["POST"])
+def search_tabs():
+	keyword = request.form.get("searchField")
+	tabs =  Tab.query.filter(Tab.name.ilike('%'+keyword+'%')).all()
+	return render_template("tabs/searchResult.html", keyword = keyword, tabs = tabs)
+
+
 @app.route ("/tabs/genres/", methods=["GET"])
 def tabs_by_genre():
 	return render_template("tabs/tabsByGenre.html", genres = Genre.find_tabs_in_genre())

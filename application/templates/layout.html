@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
   <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
     <a class="navbar-brand" href="{{url_for('index')}}">Tabulatuurit</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -42,6 +43,10 @@
         {% endfor %}
         {% endif %}
       </ul>
+      <form class="form-inline my-2 my-lg-0 mr-auto ml-auto" method="POST" action="{{ url_for('search_tabs') }}">
+        <input name= "searchField" class="form-control mr-sm-2" type="search" placeholder="Hae tabulatuureista...." aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Hae</button>
+      </form>
       <div class="form-inline mt-2 mt-md-0">
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('auth_logout') }}" title="Kirjaudu ulos">Kirjautunut nimellä {{ current_user.username }} --
@@ -53,6 +58,7 @@
       </div>
     </div>
   </nav>
+  </div>
 
   {% block body %}
   {% endblock %}
