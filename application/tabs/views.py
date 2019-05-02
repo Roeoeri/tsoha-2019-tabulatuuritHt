@@ -27,7 +27,7 @@ def canEdit(tab_id):
 
 @app.route ("/tabs/genres/", methods=["GET"])
 def tabs_by_genre():
-	return render_template("genres/list.html", genres = Genre.find_tabs_in_genre())
+	return render_template("tabs/tabsByGenre.html", genres = Genre.find_tabs_in_genre())
 
 
 @app.route ("/tabs/genres/<id>", methods=["GET"])
@@ -41,7 +41,7 @@ def tabs_in_genre(id):
     for row in res:
 	    response.append({"name": row[0], "id": row[1]})
     
-    return render_template("genres/tabsInGenre.html", name = genreName, tabs = response)
+    return render_template("tabs/tabsInGenre.html", name = genreName, tabs = response)
 
 
 
