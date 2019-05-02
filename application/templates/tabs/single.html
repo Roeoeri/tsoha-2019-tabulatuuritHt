@@ -5,6 +5,7 @@
       <div class="d-flex">
             <div class="mr-auto p-2">
                   <h1>{{tab.name}}</h1>
+                  <p>Kirjoittanut: <a href="{{url_for('single_profile', id=user.id)}}">{{user.username}}</a></p>
             </div>
             {%if canEdit%}
             <div class="p-2">
