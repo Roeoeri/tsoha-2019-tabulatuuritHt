@@ -24,6 +24,34 @@ def genre_delete(id):
 
 	return redirect(url_for("genre_index"))
 
+@app.route("/genres/update<id>", methods=["GET"])
+@login_required(role="ADMIN")
+def genre_update_form(id):
+    genre = Genre.query.get(id)
+    return render_template("genres/update.html", genre=genre, form = GenreForm())
+
+
+@app.route ("/genres/<id>/", methods=["POST"])
+@login_required(role = "ADMIN")
+def genre_update(id):
+
+    form = GenreForm(request.form)
+    genre = Genre.query.get(id)
+
+    if not form.validate():
+	    return render_template("genres/update.html", form = form, genre = genre)
+    
+    genreExists = Genre.query.filter_by(genre = form.genre.data).first()
+    if genreExists:
+        return render_template("genres/update.html", form = form, genre = genre, error ="Genre on jo olemassa")
+
+
+
+    genre.genre = (request.form.get("genre"))
+    db.session().commit()
+
+    return redirect(url_for("genre_index"))
+
 
 @app.route ("/genres/new/", methods=["GET"])
 @login_required(role="USER")

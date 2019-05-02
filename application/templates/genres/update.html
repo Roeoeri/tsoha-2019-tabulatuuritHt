@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="container">
+<form method="POST" action="{{ url_for('genre_update', id=genre.id) }}" id="tabform" >
+    <h1>Muokkaa genreä</h1>
+    <div class= "form-group">
+      <label for="Tekstikenttä,genre">{{form.genre.label}}</label>
+      {{form.genre(class="form-control", value = genre.genre)}}
+      {% for error in form.genre.errors %}
+      {% endfor %}
+      <small id="errorInGenre" class="form-text text-muted">{{error}}</small>
+    </div>
+  <input type="submit"  class = "btn btn-primary" value="Lähetä muokkaukset"/>
+</form>
+</main>
+{% endblock %}
