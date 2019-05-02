@@ -27,20 +27,18 @@
             <a class="nav-link" href="{{ url_for('tabs_form') }} " title = "Lisää tabulatuuri">Lisää tabulatuuri</a>
             {% endif %}
           </li>
-          <li class="nav-item">
-              {% if current_user.is_authenticated %}
-            <a class="nav-link" href="{{ url_for('genre_form') }} " title = "Lisää genre">Lisää Genre</a>
-            {% endif %}
-          </li>
-          <li class ="nav-item">
             {% if current_user.is_authenticated %}
 		        {% for user_role in current_user.roles %}
             {% if user_role.name == "ADMIN" %}
-            <a class="nav-link" href="{{ url_for('profiles') }} " title = "Hallinnoi käyttäjiä">Hallinnoi käyttäjiä</a>
+            <li class = "nav-item">
+                <a class="nav-link" href="{{ url_for('genre_form') }} " title = "Hallinnoi genrejä">Hallinnoi genrejä</a>
+            </li>
+            <li class = "nav-item">
+                <a class="nav-link" href="{{ url_for('profiles') }} " title = "Hallinnoi käyttäjiä">Hallinnoi käyttäjiä</a>
+            </li>
             {% endif %}
             {% endfor %}
             {% endif %}
-          </li>
         </ul>
         <div class="form-inline mt-2 mt-md-0">
     {% if current_user.is_authenticated %}
