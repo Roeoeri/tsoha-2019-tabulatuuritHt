@@ -2,15 +2,21 @@
 
 {% block body %}
 <main role="main" class="container">
-<h3>{{tab.name}}</h3>
+      <div class="d-flex">
+            <div class="mr-auto p-2"><h1>{{tab.name}}</h1></div>
+                  {%if canEdit%}
+                        <div class="p-2">
+                              <form method="GET" action="{{url_for('tabs_update_form', id=tab.id)}}">
+                                    <input type="submit" class="btn btn-primary" value="Muokkaa"/>
+                              </form>
+                        </div>
+                        <div class="p-2">
+                              <form method="POST" action="{{url_for('tabs_delete', id=tab.id)}}">
+                                    <input type="submit" class="btn btn-danger" value="Poista"/>
+                              <form>
+                        </div>
+                  {% endif%}
+      </div>
       <pre>{{tab.content}}</pre>
-      {%if canEdit%}
-      <form method="GET" action="{{url_for('tabs_update_form', id=tab.id)}}">
-      <input type="submit" class="btn btn-success" value="Muokkaa"/>
-      </form>
-      <form method="POST" action="{{url_for('tabs_delete', id=tab.id)}}">
-      <input type="submit" class="btn btn-danger" value="Poista"/>
-      </form>
-      {% endif%}
 </main>
 {% endblock %}
