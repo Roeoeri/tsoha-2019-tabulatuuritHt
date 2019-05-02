@@ -31,7 +31,7 @@
 		        {% for user_role in current_user.roles %}
             {% if user_role.name == "ADMIN" %}
             <li class = "nav-item">
-                <a class="nav-link" href="{{ url_for('genre_form') }} " title = "Hallinnoi genrejä">Hallinnoi genrejä</a>
+                <a class="nav-link" href="{{ url_for('genre_index') }} " title = "Hallinnoi genrejä">Hallinnoi genrejä</a>
             </li>
             <li class = "nav-item">
                 <a class="nav-link" href="{{ url_for('profiles') }} " title = "Hallinnoi käyttäjiä">Hallinnoi käyttäjiä</a>

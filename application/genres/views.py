@@ -5,6 +5,25 @@ from flask_login import current_user
 from application.tabs.models import Tab
 from application.genres.models import Genre
 from application.genres.forms import GenreForm
+from application.genreTab.models import GenreTab
+
+
+@app.route ("/genres/", methods =["GET"])
+@login_required(role="ADMIN")
+def genre_index():
+    return render_template("genres/list.html", genres = Genre.query.all())
+
+@app.route ("/genres/delete/<id>", methods=["POST"])
+@login_required(role="ADMIN")
+def genre_delete(id):
+	genre = Genre.query.get(id)
+	GenreTab.query.filter_by(genre_id = id).delete()
+
+	db.session.delete(genre)
+	db.session.commit()
+
+	return redirect(url_for("genre_index"))
+
 
 @app.route ("/genres/new/", methods=["GET"])
 @login_required(role="USER")
@@ -34,7 +53,7 @@ def genre_create():
     db.session().add(genre)
     db.session().commit()
 
-    return redirect(url_for("genres_index"))
+    return redirect(url_for("tabs_form"))
     
 
 
