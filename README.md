@@ -22,6 +22,8 @@ Toimintoja
 
 [Käyttöohje](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/Kaytto.md)
 
+[Puutteet](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/puutteet.md)
+
 ## Sovelluksen tunnukset <h2>
   Sovellukseen pääsee kirjautumaan pääkäyttäjänä käyttäjätunnuksella "Admin" ja salasanalla "root".
 
