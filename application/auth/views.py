@@ -22,7 +22,7 @@ def auth_login():
     user = None
     
     for u in users:
-        if bcrypt.check_password_hash(u.password, form.password.data):
+        if bcrypt.check_password_hash(u.password.encode('utf-8'), form.password.data):
             user = u
 
     if not user:
