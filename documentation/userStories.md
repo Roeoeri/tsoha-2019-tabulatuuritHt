@@ -76,8 +76,9 @@
   ~~~~sql
   Toteuttava lause:
   
-  Käyttäjän adminoikeus tarkistetaan ohjelmallisesti, tarkistamalla onko käyttäjän rooleissa admin nimistä roolia.
-  Tarkistettava lista saadaan suunnilleen näin 
+  Käyttäjän adminoikeus tarkistetaan ohjelmallisesti, tarkistamalla onko 
+  käyttäjän rooleissa admin nimistä roolia.Tarkistettava lista saadaan 
+  suunnilleen näin 
   
   Select role.name from role 
   Join roles_users On role.id = roles_user.role_id
