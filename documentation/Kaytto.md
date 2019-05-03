@@ -51,6 +51,6 @@ Etsiminen on mahdollista kirjoittamalla yläpalkin hakuun avainsana ja painamall
 ## Tietyn käyttäjän tabulatuurien etsiminen <h2>
 Tietyn käyttäjän muiden tabulatuurien etsiminen on mahdollista painamalla yksittäisen tabulatuurin näkymässä kirjoittajan nimeä. Avautuvassa näkymässä on listattu kaikki kirjoittajan tabulatuurit.
   
-## Wall of fame <h2>Avautuvaan lomakkeeseen voi syöttää uuden genren nimen ja lähettää muokkaukset painamalla "lähetä".
+## Wall of fame <h2>
 Käyttäjät voivat tarkastella wall of famea painamalla yläpalkin linkkiä "wall of fame". Wall of famessa voi tarkastella kolmea kaikkien eniten sivustolle tabulatuureja kirjoittanutta käyttäjää.
 
