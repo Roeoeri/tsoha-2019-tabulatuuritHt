@@ -12,5 +12,17 @@
       </p>
       {% endfor %}
     </ul>
+    <div class="d-flex">
+      <div class="p-2">
+        {% if prev %}
+        <a href="{{prev}}">Edellinen sivu</a>
+        {% endif %}
+      </div>
+      <div class="ml-auto p-2">
+        {% if next %}
+        <a href="{{next}}">Seuraava sivu</a>
+        {% endif %}
+      </div>
+    </div>
 </main>
 {% endblock %}

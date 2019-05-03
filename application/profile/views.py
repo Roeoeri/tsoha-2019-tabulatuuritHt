@@ -21,9 +21,18 @@ def wall_of_fame():
 
 @app.route ("/profile/<id>", methods =["GET"])
 def single_profile(id):
-    tabs = Tab.query.filter_by(account_id = id)
+    page = request.args.get('page', 1, type=int)
 
-    return render_template("profile/single.html", user = User.query.get(id), tabs = tabs)
+    tabs = Tab.query.filter_by(account_id = id).paginate(page,5,False)
+
+
+    next_url = url_for("single_profile", page=tabs.next_num, id = id) \
+        if tabs.has_next else None
+
+    prev_url = url_for("single_profile", page=tabs.prev_num, id = id) \
+        if tabs.has_prev else None
+
+    return render_template("profile/single.html", user = User.query.get(id), tabs = tabs.items, next = next_url, prev = prev_url)
 
 
     
