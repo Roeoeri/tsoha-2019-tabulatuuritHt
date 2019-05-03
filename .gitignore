@@ -130,3 +130,4 @@ application/templates/list.html.save.1
 application/templates/tabs/list.html.save   
 application/templates/list.html.save.1
 
+.env

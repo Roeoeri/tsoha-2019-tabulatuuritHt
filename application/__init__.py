@@ -1,5 +1,8 @@
 from flask import Flask
 from flask_bcrypt import Bcrypt
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -14,7 +17,6 @@ if os.environ.get("HEROKU"):
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tabs.db"
     app.config["SQLALCHEMY_ECHO"] = True
-
 
 
 db = SQLAlchemy(app)
@@ -88,7 +90,9 @@ app.config["SECRET_KEY"] = urandom(32)
 def create_user():
     try: 
          db.create_all()
-         admin = User("Admin","root")
+         username = os.getenv("USERNAME")
+         password = bcrypt.generate_password_hash(os.getenv("PASSWORD")).decode('utf-8')
+         admin = User(username,password)
          adminRole = Role("ADMIN")
          userRole = Role("USER")
 
