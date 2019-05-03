@@ -3,7 +3,6 @@
 ![Tietokantakaavio](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/tietokantakaavio_hahmotelma.png)
 
 ## Create table-lauseet <h2>
-# Code Block # 
 ~~~~sql
 CREATE TABLE account (
         id INTEGER NOT NULL, 
