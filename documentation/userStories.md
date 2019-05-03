@@ -92,13 +92,13 @@
   
   Poisto:
   
-  Delete from genre where id = poistettavanId
+  Delete from genre where id = poistettavanId;
   
   Muokkaus 
   
   Update genre
   Set genre = uusiGenre
-  Where genre.id = muokattavaId
+  Where genre.id = muokattavaId;
   
   ~~~~
   - Käyttäjän on mahdollista nähdä statistiikkaa siitä, kuinka paljon tabulatuureja kussakin genressä on.
@@ -108,7 +108,7 @@
   Select genre.genre, count(*) 
   From genre_tab 
   Join genre on genre.id = genre_tab.genre_id
-  Group by genre.genre
+  Group by genre.genre;
 
   ~~~~
   - Käyttäjän on mahdollista hakea tabulatuureja kappaleiden genrejen perusteella.
@@ -118,7 +118,7 @@
   Select tab.name, tab.id from genre 
   Join genre_tab on genre.id = genre_tab.genre_id 
   Join tab on tab.id = genre_tab.tab_id
-  Where genre.id = haettavanGenrenId
+  Where genre.id = haettavanGenrenId;
   ~~~~
   
   - Käyttäjän on mahdollista hakea yksittäistä tabulatuuria sivustolta kappaleen nimen perusteella.
@@ -126,13 +126,13 @@
   Toteuttava lause:
   
   Select * from tab
-  Where tab.name Like %hakusana% 
+  Where tab.name Like %hakusana% ;
   ~~~~
   - Käyttäjän on mahdollista hakea tabulatuureja tabulatuurin kirjoittaneen käyttäjän perusteella.
   ~~~~sql
   Toteuttava lause:
   Select * from tab 
-  Where tab.account_id = haettavanKäyttäjänId
+  Where tab.account_id = haettavanKäyttäjänId;
   ~~~~
   
   
@@ -144,7 +144,7 @@
   Join tab on tab.account_id = account.id 
   Group by account.id,  account.username 
   Order by amount desc 
-  limit 3;"
+  limit 3;
   ~~~~
   
  
