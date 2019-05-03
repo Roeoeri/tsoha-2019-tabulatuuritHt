@@ -1,8 +1,10 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
-from application import app,db
+from application import app,db,bcrypt
 from application.auth.models import User, Role
 from application.auth.forms import LoginForm, RegisterForm
+
+
 
 @app.route("/auth/login", methods  = ["GET", "POST"])
 def auth_login():
@@ -16,7 +18,12 @@ def auth_login():
         return render_template("auth/loginform.html", form = form)
 
     
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+    users = User.query.filter_by(username=form.username.data)
+    user = None
+    
+    for u in users:
+        if bcrypt.check_password_hash(u.password, form.password.data):
+            user = u
 
     if not user:
         return render_template("auth/loginform.html", form = form, error = "Käyttäjää tai salasanaa ei ole olemassa")
@@ -53,7 +60,7 @@ def auth_create():
     userRole = Role.query.filter_by(name="USER").first()
     
     username = (form.username.data)
-    password = (form.password.data)
+    password = bcrypt.generate_password_hash((form.password.data)).decode('utf-8')
 	
     user = User(username,password)
 	
