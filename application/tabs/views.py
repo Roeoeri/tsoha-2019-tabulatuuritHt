@@ -25,7 +25,7 @@ def canEdit(tab_id):
 	return isAuthorized
 
 
-@app.route("/tabs/", methods = ["POST"])
+@app.route("/tabs/search", methods = ["POST"])
 def search_tabs():
 	keyword = request.form.get("searchField")
 	tabs =  Tab.query.filter(Tab.name.ilike('%'+keyword+'%')).all()

@@ -8,6 +8,17 @@ from application.genres.models import Genre
 from application.tabs.forms import TabForm
 
 
+@app.route("/profile/walloffame", methods = ["GET"])
+def wall_of_fame():
+    stmt = "select account.id,  account.username, count(*) As amount  from account join tab on tab.account_id = account.id group by account.id,  account.username order by amount desc limit 3;"
+    res = db.engine.execute(stmt)
+    response = []
+    for row in res:
+	    response.append({"id":row[0], "username": row[1], "tabs": row[2]})
+    
+    return render_template("profile/wallOfFame.html", users = response)
+    
+
 @app.route ("/profile/<id>", methods =["GET"])
 def single_profile(id):
     tabs = Tab.query.filter_by(account_id = id)
