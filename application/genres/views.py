@@ -11,7 +11,20 @@ from application.genreTab.models import GenreTab
 @app.route ("/genres/", methods =["GET"])
 @login_required(role="ADMIN")
 def genre_index():
-    return render_template("genres/list.html", genres = Genre.query.all())
+
+    page = request.args.get('page', 1, type=int)
+
+    genres = Genre.query.paginate(page,5,False)
+
+
+    next_url = url_for("genre_index", page=genres.next_num) \
+        if genres.has_next else None
+
+    prev_url = url_for("genre_index", page=genres.prev_num) \
+        if genres.has_prev else None
+
+
+    return render_template("genres/list.html", genres = genres.items, prev = prev_url, next = next_url)
 
 @app.route ("/genres/delete/<id>", methods=["POST"])
 @login_required(role="ADMIN")
