@@ -16,7 +16,7 @@ Toimintoja
 
 [Tietokantakaavio](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/tietokantakaavio.md)
   
-[Linkki sovellukseen Herokussa](https://tsoha-tabulatuurit-ht.herokuapp.com/tabs/)
+[Linkki sovellukseen Herokussa](https://tsoha-tabulatuurit-ht.herokuapp.com/)
 
 [Asennusohje](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/Asennus.md)
 
