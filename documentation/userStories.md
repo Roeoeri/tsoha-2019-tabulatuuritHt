@@ -1,5 +1,5 @@
 # User Stories <h1>
-  ## Tähän mennessä toteutetut <h2>
+  
   - Käyttäjän on mahdollista nähdä kaikki sivustolle talletetut tabulatuurit listana.
   - Käyttäjän on mahdollista rekisteröityä sivustolle.
   - Käyttäjän on mahdollista kirjautua sivustolle.
@@ -10,10 +10,9 @@
   - Admin-käyttäjä voi poistaa tai muokata kaikkia sivustolla olevia tabulatuureja.
   - Käyttäjän on mahdollista nähdä statistiikkaa siitä, kuinka paljon tabulatuureja kussakin genressä on.
   - Käyttäjän on mahdollista hakea tabulatuureja kappaleiden genrejen perusteella.
-  
-  ## Ideoita toteutettaviksi toiminnallisuuksiksi <h2>
   - Käyttäjän on mahdollista hakea yksittäistä tabulatuuria sivustolta kappaleen nimen perusteella.
   - Käyttäjän on mahdollista hakea tabulatuureja tabulatuurin kirjoittaneen käyttäjän perusteella.
+  - Käyttäjän on mahdollista nähdä "Hall of fame", jossa näytetään kolme sivustolle eniten tabulatuureja lisännyttä käyttäjää.
  
   
   
