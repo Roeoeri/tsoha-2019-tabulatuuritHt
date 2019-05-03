@@ -3,10 +3,12 @@
 {% block body %}
 <main role="main" class="container">
   <h1>Wall of fame</h1>
+  <p>Seuraavat käyttäjät ovat lisänneet eniten tabulatuureja sivustolle</p>
   <ul class="list-group list-group-flush">
     <ul class="list-group">
       {% for u in users %}
-      <a href="{{url_for('single_profile', id=u.id)}}" class="list-group-item list-group-item-action">{{u.username}}
+      <a href="{{url_for('single_profile', id=u.id)}}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">{{u.username}}
+            <span class="badge badge-primary">{{u.tabs}}</span>
       </a>
       {% endfor %}
     </ul>
