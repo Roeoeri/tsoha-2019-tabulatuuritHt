@@ -54,7 +54,16 @@ def tabs_in_genre(id):
 
 @app.route ("/tabs/", methods=["GET"])
 def tabs_index():
-	return render_template("tabs/list.html", tabs = Tab.query.all())
+	page = request.args.get('page', 1, type=int)
+	tabs = tabs = Tab.query.paginate(page,5,False)
+
+	next_url = url_for("tabs_index", page=tabs.next_num) \
+		if tabs.has_next else None 
+	
+	prev_url = url_for("tabs_index", page = tabs.prev_num) \
+		if tabs.has_prev else None 
+	
+	return render_template("tabs/list.html", tabs = tabs.items, prev = prev_url, next = next_url)
 
 
 @app.route ("/tabs/update/<id>/", methods = ["GET"])
