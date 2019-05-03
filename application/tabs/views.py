@@ -54,23 +54,26 @@ def search_tabs():
 @app.route("/tabs/genres/", methods=["GET"])
 def tabs_by_genre():
 
-	page = request.args.get('page', 0, type=int)
+    page = request.args.get('page', 0, type=int)
 
-	response = Genre.find_tabs_in_genre()
+    response = Genre.find_tabs_in_genre()
 
+    tabs = [response[i:i+5] for i in range(0, len(response), 5)]
 
-	tabs = [response[i:i+5] for i in range(0, len(response), 5)]
-
-	next_url = url_for("tabs_by_genre", page=page + 1) \
+    next_url = url_for("tabs_by_genre", page=page + 1) \
         if page + 1 < len(tabs) else None
 
-	prev_url = url_for("tabs_by_genre", page=page - 1) \
+    prev_url = url_for("tabs_by_genre", page=page - 1) \
         if page - 1 >= 0 else None
 
-	if page >= len(tabs) or page < 0:
-		 page = 0
+    if page >= len(tabs) or page < 0:
+        page = 0
+    
+    if len(tabs) == 0:
+        return render_template("tabs/tabsByGenre.html", genres = [], next = next_url, prev_url = prev_url)
 
-	return render_template("tabs/tabsByGenre.html", genres=tabs[page], next = next_url, prev = prev_url)
+
+    return render_template("tabs/tabsByGenre.html", genres=tabs[page], next=next_url, prev=prev_url)
 
 
 @app.route("/tabs/genres/<id>", methods=["GET"])
