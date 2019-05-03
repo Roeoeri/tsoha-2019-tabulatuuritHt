@@ -26,14 +26,16 @@
   ~~~~sql
   Toteuttava lause: 
   
-  Itse kirjatumislogiikka hoidetaan ohjelmallisesti, mutta käyttäjän tiedot (mukaanlukien hashshattu salasana) haetaan seuraavasti:
+  Itse kirjatumislogiikka hoidetaan ohjelmallisesti, mutta käyttäjän tiedot 
+  (mukaanlukien hashshattu salasana) haetaan seuraavasti:
   
   Select * from account Where account.username = haettavaKäyttäjä;
   ~~~~
   - Kirjautuneen käyttäjän on mahdollista muokata yksittäistä sivustolleen lisäämää tabulatuuria.
    ~~~~sql
    Toteuttava lause:
-   Kirjatuneen käyttäjän oikeus muokata/poistaa tabulatuuria tarkistetaan ohjelmmallisesti vertaamalla käyttäjän tarkasteleman tabulatuurin viiteavavainta käyttäjän id:seen:
+   Kirjatuneen käyttäjän oikeus muokata/poistaa tabulatuuria tarkistetaan ohjelmmallisesti 
+   vertaamalla käyttäjän tarkasteleman tabulatuurin viiteavavainta käyttäjän id:seen:
    
    Tabulatuurin viiteavaimen saa esimerkiksi näin:
    
