@@ -1,6 +1,6 @@
 # Tietokantakaavio <h1>
 
-![Tietokantakaavio](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/tietokantakaavio_hahmotelma.png)
+![Tietokantakaavio](https://github.com/Roeoeri/tsoha-2019-tabulatuuritHt/blob/master/documentation/tietokantakaavio.png)
 
 ## Create table-lauseet <h2>
 ~~~~sql
