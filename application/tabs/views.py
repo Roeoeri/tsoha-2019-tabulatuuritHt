@@ -25,11 +25,31 @@ def canEdit(tab_id):
 	return isAuthorized
 
 
-@app.route("/tabs/search", methods = ["POST"])
+@app.route("/tabs/search", methods = ["POST","GET"])
 def search_tabs():
-	keyword = request.form.get("searchField")
-	tabs =  Tab.query.filter(Tab.name.ilike('%'+keyword+'%')).all()
-	return render_template("tabs/searchResult.html", keyword = keyword, tabs = tabs)
+	page = request.args.get('page', 1, type=int)
+
+	keyword = request.args.get('keyword',"", type=str)
+
+	data = request.form.get("searchField")
+
+
+	if not data is None:
+		keyword = data
+	
+	if keyword == "":
+		return redirect(url_for("tabs_index"))
+
+
+	tabs =  Tab.query.filter(Tab.name.ilike('%'+keyword+'%')).paginate(page,5,False)
+
+	next_url = url_for("search_tabs", page=tabs.next_num, keyword = keyword) \
+		if tabs.has_next else None 
+
+	prev_url = url_for("search_tabs", page = tabs.prev_num, keyword = keyword) \
+		if tabs.has_prev else None 
+	
+	return render_template("tabs/searchResult.html", keyword = keyword, tabs = tabs.items, next = next_url, prev = prev_url)
 
 
 @app.route ("/tabs/genres/", methods=["GET"])
@@ -55,7 +75,7 @@ def tabs_in_genre(id):
 @app.route ("/tabs/", methods=["GET"])
 def tabs_index():
 	page = request.args.get('page', 1, type=int)
-	tabs = tabs = Tab.query.paginate(page,5,False)
+	tabs = Tab.query.paginate(page,5,False)
 
 	next_url = url_for("tabs_index", page=tabs.next_num) \
 		if tabs.has_next else None 
